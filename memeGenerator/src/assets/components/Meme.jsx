@@ -42,8 +42,8 @@ export default function Meme() {
 					src={texts.randomImage}
 					alt="meme image"
 				/>
-				<h3>{texts.topText}</h3>
-				<h3> {texts.bottomText} </h3>
+				<h3 className="main--content__image--topText">{texts.topText}</h3>
+				<h3 className="main--content__image--bottomText"> {texts.bottomText} </h3>
 			</div>
 		</main>
 	)
