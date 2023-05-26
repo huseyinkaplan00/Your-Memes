@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&family=Anton&display=swap");
 *,
 *::before,
 *::after {
@@ -8,8 +7,19 @@
   box-sizing: border-box;
 }
 
+@media (min-width: 768px) {
+  body,
+  html {
+    font-size: 20px;
+  }
+}
+
 body {
   background-color: #fff;
+  font-family: "Lobster", cursive;
+}
+
+button {
   font-family: "Lobster", cursive;
 }
 
@@ -24,7 +34,7 @@ header {
   align-items: center;
   gap: 15px;
   padding: 0 2em;
-  height: 65px;
+  height: 4.5em;
   color: white;
   text-shadow: 1px 0px 4px black;
   font-size: 0.875em;
@@ -58,26 +68,30 @@ header p {
 }
 
 main {
-  margin: 36px 36px;
+  margin: 2em 2em;
+}
+@media (min-width: 768px) {
+  main {
+    margin: 2.5em 4em;
+  }
 }
 main .inputs {
+  gap: 2em;
   display: flex;
 }
 @media (max-width: 425px) {
   main .inputs {
     flex-direction: column;
+    gap: 0.51em;
   }
 }
 main .inputs input {
   font-family: "Lobster", cursive;
   width: 48%;
   text-align: center;
-  height: 35px;
+  height: 2.5rem;
   border: 1px solid #d5d4d8;
   border-radius: 5px;
-}
-main .inputs input:first-child {
-  margin-right: 1.59em;
 }
 main .inputs input::-moz-placeholder {
   text-align: center;
@@ -111,7 +125,7 @@ main button {
   border: none;
 }
 main button:hover {
-  background-position: right center; /* change the direction of the change here */
+  background-position: right center;
   color: #fff;
   text-decoration: none;
 }
@@ -141,8 +155,10 @@ main .main--content__image img {
   transition: all 0.5s ease-in-out;
   border-radius: 3px;
 }
-main .main--content__image img:hover {
-  animation: inOut 2s linear 0s infinite;
+@media (max-width: 700px) {
+  main .main--content__image img:hover {
+    animation: inOut 2s linear 0s infinite;
+  }
 }
 main .main--content__image .main--content__image--topText,
 main .main--content__image .main--content__image--bottomText {
