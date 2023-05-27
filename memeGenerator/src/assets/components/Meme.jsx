@@ -4,7 +4,7 @@ export default function Meme() {
 	const [texts, setTexts] = React.useState({
 		topText: "",
 		bottomText: "",
-		randomImage: "/placeHolderImage.svg",
+		randomImage: "/memeGenerator/placeHolderImage.svg",
 	})
 
 	// saving images
