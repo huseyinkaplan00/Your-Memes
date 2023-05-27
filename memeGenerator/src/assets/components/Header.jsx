@@ -5,7 +5,7 @@ export default function Header() {
 		<header>
 			<a href="index.html">
 				<img
-					src="../public/logo.png"
+					src="/logo.png"
 					alt="header icon troll face"
 					className="header__logo"
 				/>
