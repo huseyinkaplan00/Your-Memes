@@ -1,11 +1,27 @@
-import React, { useState } from "react"
-
+import React, { useRef } from "react"
+import html2canvas from "html2canvas"
 export default function Meme() {
 	const [texts, setTexts] = React.useState({
 		topText: "",
 		bottomText: "",
 		randomImage: "../public/placeHolderImage.svg",
 	})
+
+	// saving images
+	const imageRef = useRef(null)
+
+	const saveImage = () => {
+		const node = imageRef.current
+		if (node) {
+			html2canvas(node, { allowTaint: true, useCORS: true, logging: true }).then((canvas) => {
+				const imgData = canvas.toDataURL("image/png")
+				let link = document.createElement("a")
+				link.download = "meme.png"
+				link.href = imgData
+				link.click()
+			})
+		}
+	}
 
 	const [click, setClick] = React.useState(false)
 
@@ -21,17 +37,19 @@ export default function Meme() {
 	}, [])
 
 	const gettingImages = () => {
+		if (texts.topText === "" && texts.bottomText === "") {
+			setClick(true)
+			return
+		}
+		setClick(false)
 		const randomNumber = Math.floor(Math.random() * memes.length)
 		const url = memes[randomNumber].url
-		if (texts.topText || texts.bottomText) {
-			setTexts((prevImages) => ({
-				topText: "",
-				bottomText: "",
-				randomImage: url,
-			}))
-		}
 
-		setClick((prevClick) => !prevClick)
+		setTexts({
+			topText: "",
+			bottomText: "",
+			randomImage: url,
+		})
 	}
 
 	const handleChange = (event) => {
@@ -42,10 +60,6 @@ export default function Meme() {
 			// computed property name
 			[name]: value,
 		}))
-	}
-	let determine
-	if (click) {
-		determine = !texts.topText && !texts.bottomText ? <p className="errorMessage">Please Fill An Input</p> : ""
 	}
 
 	return (
@@ -67,8 +81,11 @@ export default function Meme() {
 			</div>
 
 			<button onClick={gettingImages}>Get a new meme image</button>
-			{determine}
-			<div className="main--content__image">
+			{click && <p className="errorMessage">Please Fill An Input</p>}
+			<div
+				className="main--content__image"
+				ref={imageRef}
+			>
 				<img
 					className="hover-overlay"
 					src={texts.randomImage}
@@ -77,6 +94,7 @@ export default function Meme() {
 				<h3 className="main--content__image--topText">{texts.topText}</h3>
 				<h3 className="main--content__image--bottomText"> {texts.bottomText} </h3>
 			</div>
+			<button onClick={saveImage}>Save Your Meme</button>
 		</main>
 	)
 }

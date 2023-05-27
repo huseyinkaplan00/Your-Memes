@@ -39,6 +39,14 @@ header {
   text-shadow: 1px 0px 4px black;
   font-size: 0.875em;
 }
+header a {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+}
 @media (max-width: 508px) {
   header {
     font-size: 0.75em;
