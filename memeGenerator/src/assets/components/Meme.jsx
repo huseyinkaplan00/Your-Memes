@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 export default function Meme() {
 	const [texts, setTexts] = React.useState({
@@ -6,6 +6,33 @@ export default function Meme() {
 		bottomText: "",
 		randomImage: "../public/placeHolderImage.svg",
 	})
+
+	const [click, setClick] = React.useState(false)
+
+	const [memes, setMemes] = React.useState([])
+
+	React.useEffect(() => {
+		const getMemes = async () => {
+			const res = await fetch("https://api.imgflip.com/get_memes")
+			const url = await res.json()
+			setMemes(url.data.memes)
+		}
+		getMemes()
+	}, [])
+
+	const gettingImages = () => {
+		const randomNumber = Math.floor(Math.random() * memes.length)
+		const url = memes[randomNumber].url
+		if (texts.topText || texts.bottomText) {
+			setTexts((prevImages) => ({
+				topText: "",
+				bottomText: "",
+				randomImage: url,
+			}))
+		}
+
+		setClick((prevClick) => !prevClick)
+	}
 
 	const handleChange = (event) => {
 		event.preventDefault()
@@ -16,6 +43,11 @@ export default function Meme() {
 			[name]: value,
 		}))
 	}
+	let determine
+	if (click) {
+		determine = !texts.topText && !texts.bottomText ? <p className="errorMessage">Please Fill An Input</p> : ""
+	}
+
 	return (
 		<main>
 			<div className="inputs">
@@ -34,8 +66,8 @@ export default function Meme() {
 				/>
 			</div>
 
-			<button>Get a new meme image</button>
-
+			<button onClick={gettingImages}>Get a new meme image</button>
+			{determine}
 			<div className="main--content__image">
 				<img
 					className="hover-overlay"
