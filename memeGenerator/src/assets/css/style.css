@@ -176,7 +176,6 @@ main .main--content__image img {
 }
 main .main--content__image .main--content__image--topText,
 main .main--content__image .main--content__image--bottomText {
-  font-family: "Anton", sans-serif;
   white-space: nowrap;
   position: absolute;
   left: 50%;

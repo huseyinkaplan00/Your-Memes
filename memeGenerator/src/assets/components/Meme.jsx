@@ -7,6 +7,28 @@ export default function Meme() {
 		randomImage: "/memeGenerator/placeHolderImage.svg",
 	})
 
+	const [click, setClick] = React.useState(false)
+
+	const [memes, setMemes] = React.useState([])
+
+	const [fontList, setFontList] = React.useState([])
+	const [selectedFont, setSelectedFont] = React.useState("")
+	//google fonts api key = AIzaSyA3a4MSy7tF9whne5eH2rKjM-y0slQ-mZA
+
+	React.useEffect(() => {
+		const getFonts = async () => {
+			try {
+				const res = await fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyA3a4MSy7tF9whne5eH2rKjM-y0slQ-mZA")
+				const data = await res.json()
+				const fonts = data.items.map((font) => font.family)
+				setFontList(fonts)
+				setSelectedFont(fonts[0])
+			} catch (error) {
+				console.log(error)
+			}
+		}
+		getFonts()
+	}, [])
 	// saving images
 	const imageRef = useRef(null)
 
@@ -22,10 +44,6 @@ export default function Meme() {
 			})
 		}
 	}
-
-	const [click, setClick] = React.useState(false)
-
-	const [memes, setMemes] = React.useState([])
 
 	React.useEffect(() => {
 		const getMemes = async () => {
@@ -55,6 +73,7 @@ export default function Meme() {
 	const handleChange = (event) => {
 		event.preventDefault()
 		const { name, value } = event.target
+
 		setTexts((prevNames) => ({
 			...prevNames,
 			// computed property name
@@ -94,6 +113,16 @@ export default function Meme() {
 				<h3 className="main--content__image--topText">{texts.topText}</h3>
 				<h3 className="main--content__image--bottomText"> {texts.bottomText} </h3>
 			</div>
+
+			<div>
+				<select
+					value={selectedFont}
+					onChange={handleChange}
+				>
+					<option value="">{selectedFont}</option>
+				</select>
+			</div>
+
 			<button onClick={saveImage}>Save Your Meme</button>
 		</main>
 	)
