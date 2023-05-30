@@ -2,6 +2,7 @@ import React, { useRef } from "react"
 import html2canvas from "html2canvas"
 import axios from "axios"
 import { Helmet } from "react-helmet"
+import Draggable from "react-draggable"
 export default function Meme() {
 	const [texts, setTexts] = React.useState({
 		topText: "",
@@ -10,14 +11,12 @@ export default function Meme() {
 	})
 
 	const [click, setClick] = React.useState(false)
-
 	const [memes, setMemes] = React.useState([])
-
 	const [fontList, setFontList] = React.useState([])
 	const [selectedFont, setSelectedFont] = React.useState("")
-
 	const [color, setColor ]= React.useState('#ffffff')
-console.log(color)
+
+
 	//google font select
 
 	React.useEffect(() => {
@@ -106,6 +105,8 @@ console.log(color)
 
 			<button onClick={gettingImages}>Get a new meme image</button>
 			{click && <p className="errorMessage">Please Fill An Input</p>}
+			
+			
 			<div
 				className="main--content__image"
 				ref={imageRef}
@@ -115,6 +116,7 @@ console.log(color)
 					src={texts.randomImage}
 					alt="meme image"
 				/>
+				<Draggable bounds="parent">
 				<h3
 					style={{ 
 						fontFamily: selectedFont,
@@ -125,6 +127,7 @@ console.log(color)
 				>
 					{texts.topText}
 				</h3>
+				</Draggable>
 				<h3 
 					style={{fontFamily: selectedFont}}
 				className="main--content__image--bottomText"> {texts.bottomText} </h3>
