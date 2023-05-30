@@ -16,6 +16,8 @@ export default function Meme() {
 	const [fontList, setFontList] = React.useState([])
 	const [selectedFont, setSelectedFont] = React.useState("")
 
+	const [color, setColor ]= React.useState('#ffffff')
+console.log(color)
 	//google font select
 
 	React.useEffect(() => {
@@ -114,7 +116,11 @@ export default function Meme() {
 					alt="meme image"
 				/>
 				<h3
-					style={{ fontFamily: selectedFont }}
+					style={{ 
+						fontFamily: selectedFont,
+						color: color
+						
+					}}
 					className="main--content__image--topText"
 				>
 					{texts.topText}
@@ -144,9 +150,15 @@ export default function Meme() {
 
 				</select>
 
-				<input type=>
+			
 				</div>
-				
+				<div className="new--features__colorPicker">
+						<input
+							type="color"
+							value={color}
+							onChange={e => setColor(e.target.value)}
+						/>
+				</div>
 
 			</div>
 
