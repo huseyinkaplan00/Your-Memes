@@ -191,6 +191,17 @@ main {
 		}
 	}
 
-	h3 {
+	.new--features{
+		display: flex;
+		flex-direction: column;
+		.new--features__selectFont {
+			select{
+				width: 100%;
+				border: 3px solid black;
+				margin-top: 1em;
+			}
+		}
 	}
+
+	
 }

@@ -1,5 +1,7 @@
 import React, { useRef } from "react"
 import html2canvas from "html2canvas"
+import axios from "axios"
+import { Helmet } from "react-helmet"
 export default function Meme() {
 	const [texts, setTexts] = React.useState({
 		topText: "",
@@ -13,19 +15,14 @@ export default function Meme() {
 
 	const [fontList, setFontList] = React.useState([])
 	const [selectedFont, setSelectedFont] = React.useState("")
-	//google fonts api key = AIzaSyA3a4MSy7tF9whne5eH2rKjM-y0slQ-mZA
+
+	//google font select
 
 	React.useEffect(() => {
 		const getFonts = async () => {
-			try {
-				const res = await fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyA3a4MSy7tF9whne5eH2rKjM-y0slQ-mZA")
-				const data = await res.json()
-				const fonts = data.items.map((font) => font.family)
-				setFontList(fonts)
-				setSelectedFont(fonts[0])
-			} catch (error) {
-				console.log(error)
-			}
+			const res = await axios.get("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyA3a4MSy7tF9whne5eH2rKjM-y0slQ-mZA")
+			setFontList(res.data.items)
+			
 		}
 		getFonts()
 	}, [])
@@ -79,6 +76,12 @@ export default function Meme() {
 			// computed property name
 			[name]: value,
 		}))
+
+		
+	}
+
+	const handleText = (e) => {
+		setSelectedFont(e.target.value)
 	}
 
 	return (
@@ -110,17 +113,41 @@ export default function Meme() {
 					src={texts.randomImage}
 					alt="meme image"
 				/>
-				<h3 className="main--content__image--topText">{texts.topText}</h3>
-				<h3 className="main--content__image--bottomText"> {texts.bottomText} </h3>
+				<h3
+					style={{ fontFamily: selectedFont }}
+					className="main--content__image--topText"
+				>
+					{texts.topText}
+				</h3>
+				<h3 
+					style={{fontFamily: selectedFont}}
+				className="main--content__image--bottomText"> {texts.bottomText} </h3>
 			</div>
 
-			<div>
-				<select
-					value={selectedFont}
-					onChange={handleChange}
-				>
-					<option value="">{selectedFont}</option>
+			<Helmet>
+				{selectedFont && (
+					<link
+						href={`https://fonts.googleapis.com/css?family=${selectedFont.replace(" ", "+")}&display=swap`}
+						rel="stylesheet"
+					/>
+				)}
+			</Helmet>
+			<div className="new--features">
+				<div className="new--features__selectFont">
+				<select onChange={handleText}> 
+					
+					{fontList.map(font => (
+						<option key={font.family} value={font.family} >
+						{font.family}
+					</option>
+					))}
+
 				</select>
+
+				<input type=>
+				</div>
+				
+
 			</div>
 
 			<button onClick={saveImage}>Save Your Meme</button>

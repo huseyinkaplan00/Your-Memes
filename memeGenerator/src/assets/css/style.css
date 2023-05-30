@@ -201,4 +201,13 @@ main .main--content__image .main--content__image--topText {
 }
 main .main--content__image .main--content__image--bottomText {
   bottom: 1em;
+}
+main .new--features {
+  display: flex;
+  flex-direction: column;
+}
+main .new--features .new--features__selectFont select {
+  width: 100%;
+  border: 3px solid black;
+  margin-top: 1em;
 }/*# sourceMappingURL=style.css.map */
