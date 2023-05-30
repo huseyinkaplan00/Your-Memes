@@ -3,12 +3,16 @@ import html2canvas from "html2canvas"
 import axios from "axios"
 import { Helmet } from "react-helmet"
 import Draggable from "react-draggable"
+
+
 export default function Meme() {
 	const [texts, setTexts] = React.useState({
 		topText: "",
 		bottomText: "",
 		randomImage: "/memeGenerator/placeHolderImage.svg",
+		fontSize: ""
 	})
+
 
 	const [click, setClick] = React.useState(false)
 	const [memes, setMemes] = React.useState([])
@@ -18,6 +22,7 @@ export default function Meme() {
 
 
 	//google font select
+	//font size feature eklenecek, input arttırma feature ı eklenecek . Kullanıcı istediği kadar input girebilecek .
 
 	React.useEffect(() => {
 		const getFonts = async () => {
@@ -85,6 +90,12 @@ export default function Meme() {
 		setSelectedFont(e.target.value)
 	}
 
+	const style = {
+			fontFamily: selectedFont,
+			color: color,
+			fontSize: texts.fontSize+"px"
+	}
+
 	return (
 		<main>
 			<div className="inputs">
@@ -118,19 +129,17 @@ export default function Meme() {
 				/>
 				<Draggable bounds="parent">
 				<h3
-					style={{ 
-						fontFamily: selectedFont,
-						color: color
-						
-					}}
+					style={style}
 					className="main--content__image--topText"
 				>
 					{texts.topText}
 				</h3>
 				</Draggable>
+				<Draggable bounds="parent">
 				<h3 
-					style={{fontFamily: selectedFont}}
+					style={style}
 				className="main--content__image--bottomText"> {texts.bottomText} </h3>
+				</Draggable>
 			</div>
 
 			<Helmet>
@@ -160,6 +169,16 @@ export default function Meme() {
 							type="color"
 							value={color}
 							onChange={e => setColor(e.target.value)}
+						/>
+				</div>
+
+				<div className="new--features__fontSize">
+						<input 
+							name="fontSize"
+							type="number"
+							value={texts.fontSize}
+							onChange={handleChange}
+							placeholder="Enter Font Size Number"
 						/>
 				</div>
 

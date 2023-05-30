@@ -162,7 +162,6 @@ main .main--content__image .main--content__image {
   height: auto;
 }
 main .main--content__image img {
-  cursor: pointer;
   width: 100%;
   display: block;
   transition: all 0.5s ease-in-out;
@@ -176,6 +175,7 @@ main .main--content__image img {
 }
 main .main--content__image .main--content__image--topText,
 main .main--content__image .main--content__image--bottomText {
+  cursor: grab;
   white-space: nowrap;
   position: absolute;
   left: 50%;
