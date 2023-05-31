@@ -72,10 +72,10 @@ export default function Meme() {
 	}, [])
 
 	const gettingImages = () => {
-		if (texts.topText === "" && texts.bottomText === "") {
-			setClick(true)
-			return
-		}
+		// if (texts.topText === "" && texts.bottomText === "") {
+		// 	setClick(true)
+		// 	return
+		// }
 		setClick(false)
 		const randomNumber = Math.floor(Math.random() * memes.length)
 		const url = memes[randomNumber].url
@@ -143,7 +143,7 @@ export default function Meme() {
 			</div>
 
 			<button onClick={gettingImages}>Get a new meme image</button>
-			{click && <p className="errorMessage">Please Fill An Input</p>}
+			{/* {click && <p className="errorMessage">Please Fill An Input</p>} */}
 			
 			
 			<div
