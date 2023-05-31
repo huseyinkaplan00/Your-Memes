@@ -84,14 +84,30 @@ main {
   }
 }
 main .inputs {
-  gap: 2em;
+  gap: 1em;
   display: flex;
+  align-items: center;
 }
 @media (max-width: 425px) {
   main .inputs {
     flex-direction: column;
     gap: 0.51em;
   }
+}
+main .inputs .inputs--addButton {
+  width: 10%;
+  height: 37px;
+  line-height: 0.6;
+  border-radius: 50%;
+}
+main .inputs .inputs--addButton small {
+  background-color: white;
+  padding: 3px 7px;
+  border-radius: 50%;
+  color: black;
+  font-weight: 600;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 main .inputs input {
   font-family: "Lobster", cursive;

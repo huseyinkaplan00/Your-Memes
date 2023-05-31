@@ -19,7 +19,21 @@ export default function Meme() {
 	const [fontList, setFontList] = React.useState([])
 	const [selectedFont, setSelectedFont] = React.useState("")
 	const [color, setColor ]= React.useState('#ffffff')
+	const [extraInput, setExtraInput] = React.useState([])
+	const addInput = () =>  {
+		setExtraInput([
+			...extraInput, {id: `input-${Date.now()}`, value: ""}
+		])
+	}
 
+	const handleMoreInputsChange = (event) => {
+		event.preventDefault()
+		const {name, value} = event.target
+		setExtraInput(extraInput.map(prevInput => (
+			prevInput.id === name ? {...prevInput, value: value} : prevInput
+		))) 
+		 
+	}
 
 	//google font select
 	//font size feature eklenecek, input arttırma feature ı eklenecek . Kullanıcı istediği kadar input girebilecek .
@@ -112,6 +126,20 @@ export default function Meme() {
 					onChange={handleChange}
 					placeholder="Enter Bottom Text"
 				/>
+
+				{extraInput.map(inputs => (
+					<input
+						
+						key={inputs.id}
+						name={inputs.id}
+						value={inputs.value}
+						onChange={handleMoreInputsChange}
+						placeholder="Enter Text"
+					/>
+				))}
+
+				<button className="inputs--addButton" onClick={addInput} ><small>+ </small></button>
+
 			</div>
 
 			<button onClick={gettingImages}>Get a new meme image</button>
@@ -140,6 +168,18 @@ export default function Meme() {
 					style={style}
 				className="main--content__image--bottomText"> {texts.bottomText} </h3>
 				</Draggable>
+
+				{extraInput.map(newInputs => {
+
+					return(
+						<Draggable bounds="parent">
+						<h3 className="main--content__image--bottomText" style={style}> {newInputs.value} </h3>
+						
+					</Draggable>
+					)
+				
+				})}
+
 			</div>
 
 			<Helmet>
