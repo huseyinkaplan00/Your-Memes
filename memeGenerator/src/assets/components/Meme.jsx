@@ -10,7 +10,7 @@ export default function Meme() {
 		topText: "",
 		bottomText: "",
 		randomImage: "/memeGenerator/placeHolderImage.svg",
-		fontSize: ""
+		fontSize: "25"
 	})
 
 
@@ -138,7 +138,7 @@ export default function Meme() {
 					/>
 				))}
 
-				<button className="inputs--addButton" onClick={addInput} ><small>+ </small></button>
+				<button className="inputs--addButton" onClick={addInput} ><small>+</small></button>
 
 			</div>
 
@@ -219,6 +219,7 @@ export default function Meme() {
 							value={texts.fontSize}
 							onChange={handleChange}
 							placeholder="Enter Font Size Number"
+							
 						/>
 				</div>
 
