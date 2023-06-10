@@ -3,7 +3,7 @@ import html2canvas from "html2canvas"
 import axios from "axios"
 import { Helmet } from "react-helmet"
 import Draggable from "react-draggable"
-
+//black and dark mode ekle practice için ! 
 
 export default function Meme() {
 	const [texts, setTexts] = React.useState({
