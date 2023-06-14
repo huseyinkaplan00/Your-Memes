@@ -23,6 +23,8 @@ export default function Meme() {
 	const [extraInput, setExtraInput] = React.useState([])
 	const [backgroundColor, setBackgroundColor] = React.useState("")
 	const [boxShadowColor, setBoxShadowColor] = React.useState("#fff")
+	const [opacityColor, setOpacityColor] = React.useState("")
+	console.log("opacity color : " + opacityColor)
 
 	const addInput = () => {
 		setExtraInput([...extraInput, { id: `input-${Date.now()}`, value: "" }])
@@ -44,13 +46,12 @@ export default function Meme() {
 
 		if (imageElement.complete) {
 			const color = colorThief.getColor(imageElement)
-
 			//inverting color
 			const invertColor = color.map((value) => 255 - value)
 
 			//converting to string
 			const invertedColorStr = `rgb(${invertColor.join(",")})`
-
+			const invertedColorRgba = `rgba(${invertColor.join(",")},0.4)`
 			//hex color
 			//calculating Hex value
 			const toHex = (c) => {
@@ -62,8 +63,11 @@ export default function Meme() {
 				return "#" + toHex(r) + toHex(g) + toHex(b)
 			}
 
+			
+
 			setBoxShadowColor(rgbToHex(color[0], color[1], color[2]))
 			setBackgroundColor(invertedColorStr)
+			setOpacityColor(invertedColorRgba)
 		}
 	}, [texts.randomImage])
 
@@ -74,9 +78,11 @@ export default function Meme() {
 	}, [texts.randomImage, getColorFromImage])
 
 	//choosing body element with effect
-
+	// console.log("background color : "+  backgroundColor + "box shadow : " + boxShadowColor)
 	useEffect(() => {
-		document.body.style.backgroundColor = backgroundColor
+		document.body.style.background = backgroundColor
+		document.body.style.backgroundImage= `linear-gradient(-45deg, ${backgroundColor}, ${boxShadowColor}, ${opacityColor}, #fff, #000)`
+
 	}, [backgroundColor])
 
 	//google font select
@@ -177,7 +183,7 @@ export default function Meme() {
 						value={inputs.value}
 						onChange={handleMoreInputsChange}
 						placeholder="Enter Text"
-						style={{ fontFamily: selectedFont }}
+						style={{ fontFamily: selectedFont, boxShadow: boxShadowColor ? `-1px 0px 3px 2px ${boxShadowColor}` : "none" }}
 					/>
 				))}
 
@@ -280,6 +286,7 @@ export default function Meme() {
 						type="number"
 						value={texts.fontSize}
 						onChange={handleChange}
+						className="new--features__selectFont--fsize"
 						placeholder="Enter Font Size Number"
 						title="change meme font size"
 					/>

@@ -15,8 +15,21 @@
 }
 
 body {
-  background-color: #fff;
+  background-size: 400% 400% !important;
+  animation: gradientBackground 15s ease infinite;
   font-family: "Lobster", cursive;
+  transition: 1s all;
+}
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 button {
@@ -97,7 +110,7 @@ main .inputs {
 @media (max-width: 425px) {
   main .inputs {
     flex-direction: column;
-    gap: 0.51em;
+    gap: 1.3em;
   }
 }
 main .inputs .inputs--addButton {
@@ -138,7 +151,6 @@ main .inputs input:focus {
   }
   main .inputs input:first-child {
     margin-right: 0;
-    margin-bottom: 0.5em;
   }
 }
 main button {
@@ -246,6 +258,24 @@ main .new--features input {
 main .new--features h4 {
   font-weight: 500;
 }
+main .new--features .new--features__selectFont {
+  display: flex;
+  white-space: nowrap;
+  gap: 1.5em;
+  align-items: center;
+}
+main .new--features .new--features__selectFont .new--features__selectFont--fsize {
+  text-align: center;
+}
+@media (max-width: 600px) {
+  main .new--features .new--features__selectFont {
+    flex-direction: column;
+    padding: 0 4.3em;
+  }
+  main .new--features .new--features__selectFont input, main .new--features .new--features__selectFont select {
+    width: 100%;
+  }
+}
 main .new--features .new--features__selectFont select {
   font-size: 1em;
   border-radius: 5px;
@@ -255,10 +285,4 @@ main .new--features .new--features__selectFont select {
 main .new--features .new--features__selectFont select:focus, main .new--features .new--features__selectFont select:active {
   border: none;
   outline: none;
-}
-main .new--features .new--features__selectFont {
-  display: flex;
-  white-space: nowrap;
-  gap: 1.5em;
-  align-items: center;
 }/*# sourceMappingURL=style.css.map */

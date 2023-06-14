@@ -16,8 +16,23 @@ html {
 }
 
 body {
-	background-color: #fff;
+	@keyframes gradientBackground {
+		0%{
+			background-position: 0% 50%;
+		}
+
+		50%{
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+	background-size: 400% 400% !important;
+	animation: gradientBackground 15s ease infinite;
 	font-family: "Lobster", cursive;
+	transition: 1s all ;
 }
 
 button {
@@ -88,7 +103,7 @@ main {
 
 		@media (max-width: 425px) {
 			flex-direction: column;
-			gap: 0.51em;
+			gap: 1.3em;
 		}
 		display: flex;
 		align-items: center;
@@ -125,7 +140,6 @@ main {
 				width: 100%;
 				&:first-child {
 					margin-right: 0;
-					margin-bottom: 0.5em;
 				}
 			}
 		}
@@ -234,6 +248,22 @@ main {
 			font-weight: 500;
 		}
 		.new--features__selectFont {
+			display: flex;
+			.new--features__selectFont--fsize{
+				text-align: center;
+			}
+			@media (max-width:600px) {
+				flex-direction: column;
+				padding: 0 4.3em;
+				input,select {
+					width: 100%;
+				}
+			}
+
+			
+			white-space: nowrap;
+			gap: 1.5em;
+			align-items: center;
 			select {
 				font-size: 1em;
 				border-radius: 5px;
@@ -247,11 +277,6 @@ main {
 			}
 		}
 
-		.new--features__selectFont {
-			display: flex;
-			white-space: nowrap;
-			gap: 1.5em;
-			align-items: center;
-		}
+		
 	}
 }
