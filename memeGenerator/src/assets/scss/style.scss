@@ -15,6 +15,8 @@ html {
 	}
 }
 
+
+
 body {
 	@keyframes gradientBackground {
 		0%{
@@ -145,18 +147,15 @@ main {
 		}
 	}
 
-	button {
-		width: 100%;
-		margin-bottom: 17px;
-		margin-top: 15px;
+	@mixin button-styles($text-color, $width, $borderRadius){
+		width: $width;
 		cursor: pointer;
 		background-image: linear-gradient(to right, #000000 0%, #434343 51%, #000000 100%);
-		padding: 15px 0;
-		border-radius: 3px;
+		border-radius: $borderRadius;
 		text-align: center;
 		transition: 0.5s;
 		background-size: 200% auto;
-		color: white;
+		color: $text-color;
 		display: block;
 		border: none;
 
@@ -165,6 +164,14 @@ main {
 			color: #fff;
 			text-decoration: none;
 		}
+	}
+	button {
+		@include button-styles(#fff, 100%, 3px);
+		margin-bottom: 17px;
+		margin-top: 15px;
+		padding: 15px 0;
+
+		
 	}
 	.errorMessage {
 		color: red;

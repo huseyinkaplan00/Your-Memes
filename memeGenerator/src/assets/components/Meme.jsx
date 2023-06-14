@@ -24,7 +24,6 @@ export default function Meme() {
 	const [backgroundColor, setBackgroundColor] = React.useState("")
 	const [boxShadowColor, setBoxShadowColor] = React.useState("#fff")
 	const [opacityColor, setOpacityColor] = React.useState("")
-	console.log("opacity color : " + opacityColor)
 
 	const addInput = () => {
 		setExtraInput([...extraInput, { id: `input-${Date.now()}`, value: "" }])
@@ -78,7 +77,6 @@ export default function Meme() {
 	}, [texts.randomImage, getColorFromImage])
 
 	//choosing body element with effect
-	// console.log("background color : "+  backgroundColor + "box shadow : " + boxShadowColor)
 	useEffect(() => {
 		document.body.style.background = backgroundColor
 		document.body.style.backgroundImage= `linear-gradient(-45deg, ${backgroundColor}, ${boxShadowColor}, ${opacityColor}, #fff, #000)`
