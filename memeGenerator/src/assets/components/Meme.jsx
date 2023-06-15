@@ -19,7 +19,7 @@ export default function Meme() {
 	const [memes, setMemes] = React.useState([])
 	const [fontList, setFontList] = React.useState([])
 	const [selectedFont, setSelectedFont] = React.useState("")
-	const [color, setColor] = React.useState("#ffffff")
+	const [color, setColor] = React.useState(null)
 	const [extraInput, setExtraInput] = React.useState([])
 	const [backgroundColor, setBackgroundColor] = React.useState("")
 	const [boxShadowColor, setBoxShadowColor] = React.useState("#fff")
@@ -151,7 +151,8 @@ export default function Meme() {
 
 	const style = {
 		fontFamily: selectedFont,
-		color: backgroundColor,
+		//if color state has got an value use that if not use the backgroundColor state value 
+		color: color || backgroundColor,
 		fontSize: texts.fontSize + "px",
 	}
 
@@ -159,6 +160,7 @@ export default function Meme() {
 		<main>
 			<div className="inputs">
 				<input
+					
 					name="topText"
 					value={texts.topText}
 					onChange={handleChange}
@@ -177,6 +179,7 @@ export default function Meme() {
 				{extraInput.map((inputs) => (
 					<input
 						key={inputs.id}
+						id={inputs.id}
 						name={inputs.id}
 						value={inputs.value}
 						onChange={handleMoreInputsChange}
@@ -259,7 +262,7 @@ export default function Meme() {
 			</Helmet>
 			<div className="new--features">
 				<div className="new--features__selectFont">
-					<h4 style={{ color: boxShadowColor }}> Font Family & Color & Size : </h4>
+					<h4 style={{ color: boxShadowColor, textShadow: `0px 0px 4px ${backgroundColor}` }}> Font Family & Color & Size : </h4>
 					<select
 						style={{ fontFamily: selectedFont, boxShadow: boxShadowColor ? `-1px 0px 17px 3px ${boxShadowColor}` : "none" }}
 						onChange={handleText}
