@@ -11,6 +11,7 @@ Welcome to the Meme Generator project. This application allows you to create you
 - [Installing](#installing)
 - [Running the App](#running-the-app)
 - [Built With](#built-with)
+- [Link](#link)
 - [Author](#author)
 
 ## Getting Started
@@ -55,11 +56,15 @@ Your application runs on `http://localhost:3000` in the browser.
 ## Built With
 
 - [React](https://reactjs.org/) - The web framework used.
-- [axios](https://axios-http.com/) - Promise based HTTP client for the browser and node.js.
+- [axios](https://axios-http.com/) - Promise-based HTTP client for the browser and node.js.
 - [colorthief](https://lokeshdhakar.com/projects/color-thief/) - A script for grabbing the color palette from an image.
 - [html2canvas](https://html2canvas.hertzen.com/) - JavaScript HTML renderer.
 - [react-draggable](https://www.npmjs.com/package/react-draggable) - React component for draggable elements.
 - [react-helmet](https://www.npmjs.com/package/react-helmet) - A document head manager for React.
+
+## Link
+
+-  [GitHub Pages](https://huseyinkaplan00.github.io/memeGenerator/)
 
 ## Author
 
