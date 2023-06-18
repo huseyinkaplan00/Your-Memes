@@ -36,12 +36,17 @@ button {
   font-family: "Lobster", cursive;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
 ul {
   list-style: none;
 }
 
 header {
-  background: url("https://www.transparenttextures.com/patterns/asfalt-light.png"), linear-gradient(315deg, rgba(32, 28, 28, 0.6952030812) 100%, rgb(255, 255, 255) 25%);
+  background: url(https://www.transparenttextures.com/patterns/asfalt-light.png), linear-gradient(315deg, rgba(32, 28, 28, 0.6952030812) 100%, rgb(255, 255, 255) 25%);
   width: 100%;
   display: flex;
   align-items: center;
@@ -50,12 +55,6 @@ header {
   color: white;
   text-shadow: 1px 0px 4px black;
   font-size: 0.775em;
-}
-@media (min-width: 1068px) {
-  header {
-    padding: 0 14em;
-    font-size: 0.775em;
-  }
 }
 header a {
   display: flex;
@@ -118,6 +117,12 @@ main .inputs .inputs--addButton {
   line-height: 0.6;
   height: 50px;
   border-radius: 50%;
+}
+@media ((min-width: 425px) and (max-width: 762px)) {
+  main .inputs .inputs--addButton {
+    width: 60px;
+    height: 53px;
+  }
 }
 main .inputs .inputs--addButton small {
   width: 50%;
@@ -272,8 +277,18 @@ main .new--features .new--features__selectFont .new--features__selectFont--fsize
     flex-direction: column;
     padding: 0 4.3em;
   }
-  main .new--features .new--features__selectFont input, main .new--features .new--features__selectFont select {
+  main .new--features .new--features__selectFont input,
+  main .new--features .new--features__selectFont select {
     width: 100%;
+  }
+}
+@media (max-width: 290px) {
+  main .new--features .new--features__selectFont {
+    padding: 0;
+  }
+  main .new--features .new--features__selectFont h4 {
+    white-space: break-spaces;
+    text-align: center;
   }
 }
 main .new--features .new--features__selectFont select {
@@ -285,4 +300,45 @@ main .new--features .new--features__selectFont select {
 main .new--features .new--features__selectFont select:focus, main .new--features .new--features__selectFont select:active {
   border: none;
   outline: none;
+}
+
+footer {
+  background: url(https://www.transparenttextures.com/patterns/foggy-birds.png), linear-gradient(315deg, rgba(32, 28, 28, 0.6952030812) 100%, rgb(255, 255, 255) 25%);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 1em;
+  height: 3.5em;
+  color: white;
+  text-shadow: 1px 0px 4px black;
+  font-size: 1em;
+  justify-content: center;
+}
+@media (max-width: 339px) {
+  footer {
+    font-size: 0.6em;
+  }
+  footer img {
+    width: 20px;
+    height: 20px;
+  }
+}
+@media (max-width: 223px) {
+  footer {
+    font-size: 0.45em;
+    white-space: nowrap;
+  }
+  footer img {
+    width: 13px;
+    height: 13px;
+  }
+}
+footer img {
+  vertical-align: middle;
+}
+footer p::after {
+  content: "|";
+  padding: 0 15px;
+  font-size: 1em;
+  letter-spacing: -5px;
 }/*# sourceMappingURL=style.css.map */

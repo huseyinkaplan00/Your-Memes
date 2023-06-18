@@ -15,15 +15,13 @@ html {
 	}
 }
 
-
-
 body {
 	@keyframes gradientBackground {
-		0%{
+		0% {
 			background-position: 0% 50%;
 		}
 
-		50%{
+		50% {
 			background-position: 100% 50%;
 		}
 
@@ -34,31 +32,36 @@ body {
 	background-size: 400% 400% !important;
 	animation: gradientBackground 15s ease infinite;
 	font-family: "Lobster", cursive;
-	transition: 1s all ;
+	transition: 1s all;
 }
 
+//global values
 button {
 	font-family: "Lobster", cursive;
+}
+
+a {
+	text-decoration: none;
+	color: white;
 }
 
 ul {
 	list-style: none;
 }
-
-header {
-	background: url("https://www.transparenttextures.com/patterns/asfalt-light.png"), linear-gradient(315deg, rgba(32, 28, 28, 0.695203081232493) 100%, rgba(255, 255, 255, 255) 25%);
+//header component
+@mixin header-footer($height, $fontSize, $padding, $backgroundUrl, $backgroundLinear) {
+	background: $backgroundUrl, $backgroundLinear;
 	width: 100%;
 	display: flex;
 	align-items: center;
-	padding: 0 2em;
-	@media (min-width: 1068px) {
-		padding: 0 14em;
-		font-size: 0.775em;
-	}
-	height: 5.8em;
+	padding: $padding;
+	height: $height;
 	color: white;
 	text-shadow: 1px 0px 4px black;
-	font-size: 0.775em;
+	font-size: $fontSize;
+}
+header {
+	@include header-footer(5.8em, 0.775em, 0 2em, url(https://www.transparenttextures.com/patterns/asfalt-light.png), linear-gradient(315deg, rgba(32, 28, 28, 0.6952030812) 100%, rgb(255, 255, 255) 25%));
 	a {
 		display: flex;
 		gap: 1em;
@@ -94,6 +97,7 @@ header {
 	}
 }
 
+//main component
 main {
 	@media (min-width: 1168px) {
 		margin: 1.5em 17em;
@@ -114,6 +118,10 @@ main {
 			line-height: 0.6;
 			height: 50px;
 			border-radius: 50%;
+			@media ((min-width: 425px) and ( max-width:762px)) {
+				width: 60px;
+				height: 53px;
+			}
 			small {
 				width: 50%;
 				background-color: white;
@@ -147,7 +155,7 @@ main {
 		}
 	}
 
-	@mixin button-styles($text-color, $width, $borderRadius){
+	@mixin button-styles($text-color, $width, $borderRadius) {
 		width: $width;
 		cursor: pointer;
 		background-image: linear-gradient(to right, #000000 0%, #434343 51%, #000000 100%);
@@ -170,8 +178,6 @@ main {
 		margin-bottom: 17px;
 		margin-top: 15px;
 		padding: 15px 0;
-
-		
 	}
 	.errorMessage {
 		color: red;
@@ -256,18 +262,25 @@ main {
 		}
 		.new--features__selectFont {
 			display: flex;
-			.new--features__selectFont--fsize{
+			.new--features__selectFont--fsize {
 				text-align: center;
 			}
-			@media (max-width:600px) {
+			@media (max-width: 600px) {
 				flex-direction: column;
 				padding: 0 4.3em;
-				input,select {
+				input,
+				select {
 					width: 100%;
 				}
 			}
+			@media (max-width: 290px) {
+				padding: 0;
+				h4 {
+					white-space: break-spaces;
+					text-align: center;
+				}
+			}
 
-			
 			white-space: nowrap;
 			gap: 1.5em;
 			align-items: center;
@@ -283,7 +296,40 @@ main {
 				}
 			}
 		}
+	}
+}
 
-		
+//footer component
+
+footer {
+	@media (max-width: 339px) {
+		font-size: 0.6em;
+		img {
+			width: 20px;
+			height: 20px;
+		}
+	}
+
+	@media (max-width: 223px) {
+		font-size: 0.45em;
+		white-space: nowrap;
+		img {
+			width: 13px;
+			height: 13px;
+		}
+	}
+
+	@include header-footer(3.5em, 1em, 0 1em, url(https://www.transparenttextures.com/patterns/foggy-birds.png), linear-gradient(315deg, rgba(32, 28, 28, 0.6952030812) 100%, rgb(255, 255, 255) 25%));
+	justify-content: center;
+
+	img {
+		vertical-align: middle;
+	}
+
+	p::after {
+		content: "|";
+		padding: 0 15px;
+		font-size: 1em;
+		letter-spacing: -5px;
 	}
 }
