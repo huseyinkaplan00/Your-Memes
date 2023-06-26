@@ -48,7 +48,7 @@ a {
 ul {
 	list-style: none;
 }
-//header component
+//header component styles and mixins 
 @mixin header-footer($height, $fontSize, $padding, $backgroundUrl, $backgroundLinear) {
 	background: $backgroundUrl, $backgroundLinear;
 	width: 100%;
@@ -59,9 +59,14 @@ ul {
 	color: white;
 	text-shadow: 1px 0px 4px black;
 	font-size: $fontSize;
+	backdrop-filter: blur(10px);
 }
-header {
-	@include header-footer(5.8em, 0.775em, 0 2em, url(https://www.transparenttextures.com/patterns/asfalt-light.png), linear-gradient(315deg, rgba(32, 28, 28, 0.6952030812) 100%, rgb(255, 255, 255) 25%));
+
+.header {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	transition: height 0.5s ease;
 	a {
 		display: flex;
 		gap: 1em;
@@ -69,6 +74,19 @@ header {
 		justify-content: center;
 		text-decoration: none;
 		color: white;
+	}
+
+	
+	.header__logo {
+		border-radius: 50%;
+		box-shadow: 3px 3px 3px black;
+	}
+	p {
+		margin-left: auto;
+		font-family: "Abril Fatface", cursive;
+		@media (max-width: 508px) {
+			display: none;
+		}
 	}
 
 	@media (max-width: 508px) {
@@ -80,29 +98,41 @@ header {
 		text-align: center;
 		height: 7.5em;
 	}
-
+}
+.largeHeader {
+	@include header-footer(5.8em, 0.775em, 0 2em, url(https://www.transparenttextures.com/patterns/asfalt-light.png), linear-gradient(315deg, rgba(32, 28, 28, 0.6952030812) 100%, rgb(255, 255, 255) 25%));
+	
 	.header__logo {
 		height: 50px;
 		width: 50px;
-		border-radius: 50%;
-		box-shadow: 3px 3px 3px black;
+		
 	}
+}
 
-	p {
-		margin-left: auto;
-		font-family: "Abril Fatface", cursive;
-		@media (max-width: 508px) {
-			display: none;
-		}
+.smallHeader {
+	@include header-footer(3.6em, 0.675em, 0 2em, url(https://www.transparenttextures.com/patterns/asfalt-light.png), linear-gradient(315deg, rgba(32, 28, 28, 0.6952030812) 100%, rgb(255, 255, 255) 25%));
+	
+	.header__logo {
+		height: 30px;
+		width: 30px;
 	}
 }
 
 //main component
 main {
+	min-height: calc(100vh - 3.5em);
+
+	@media (min-height:1000px) {
+		min-height: calc(100vh - 9.8em);
+		margin: 2em 2em 1.5em 2em;
+	}
+
+	margin: 2em 2em 5em 2em;
+
 	@media (min-width: 1168px) {
 		margin: 1.5em 17em;
 	}
-	margin: 2em 2em;
+	
 
 	.inputs {
 		gap: 1em;

@@ -45,7 +45,48 @@ ul {
   list-style: none;
 }
 
-header {
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  transition: height 0.5s ease;
+}
+.header a {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+}
+.header .header__logo {
+  border-radius: 50%;
+  box-shadow: 3px 3px 3px black;
+}
+.header p {
+  margin-left: auto;
+  font-family: "Abril Fatface", cursive;
+}
+@media (max-width: 508px) {
+  .header p {
+    display: none;
+  }
+}
+@media (max-width: 508px) {
+  .header {
+    font-size: 0.75em;
+    justify-content: center;
+  }
+}
+@media (max-width: 266px) {
+  .header {
+    font-size: 0.6em;
+    text-align: center;
+    height: 7.5em;
+  }
+}
+
+.largeHeader {
   background: url(https://www.transparenttextures.com/patterns/asfalt-light.png), linear-gradient(315deg, rgba(32, 28, 28, 0.6952030812) 100%, rgb(255, 255, 255) 25%);
   width: 100%;
   display: flex;
@@ -55,46 +96,41 @@ header {
   color: white;
   text-shadow: 1px 0px 4px black;
   font-size: 0.775em;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
 }
-header a {
-  display: flex;
-  gap: 1em;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: white;
-}
-@media (max-width: 508px) {
-  header {
-    font-size: 0.75em;
-    justify-content: center;
-  }
-}
-@media (max-width: 266px) {
-  header {
-    font-size: 0.6em;
-    text-align: center;
-    height: 7.5em;
-  }
-}
-header .header__logo {
+.largeHeader .header__logo {
   height: 50px;
   width: 50px;
-  border-radius: 50%;
-  box-shadow: 3px 3px 3px black;
 }
-header p {
-  margin-left: auto;
-  font-family: "Abril Fatface", cursive;
+
+.smallHeader {
+  background: url(https://www.transparenttextures.com/patterns/asfalt-light.png), linear-gradient(315deg, rgba(32, 28, 28, 0.6952030812) 100%, rgb(255, 255, 255) 25%);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 2em;
+  height: 3.6em;
+  color: white;
+  text-shadow: 1px 0px 4px black;
+  font-size: 0.675em;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
 }
-@media (max-width: 508px) {
-  header p {
-    display: none;
-  }
+.smallHeader .header__logo {
+  height: 30px;
+  width: 30px;
 }
 
 main {
-  margin: 2em 2em;
+  min-height: calc(100vh - 3.5em);
+  margin: 2em 2em 5em 2em;
+}
+@media (min-height: 1000px) {
+  main {
+    min-height: calc(100vh - 9.8em);
+    margin: 2em 2em 1.5em 2em;
+  }
 }
 @media (min-width: 1168px) {
   main {
@@ -312,6 +348,8 @@ footer {
   color: white;
   text-shadow: 1px 0px 4px black;
   font-size: 1em;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   justify-content: center;
 }
 @media (max-width: 339px) {
