@@ -4,7 +4,7 @@ Welcome to the Meme Generator project. This application allows you to create you
 
 ![Meme Generator Preview](./memeGenerator/public/memeGeneratorGif.gif)
 
-## Table of Contents
+## Table of Contents 
 
 - [Getting Started](#getting-started)
 - [Prerequisites](#prerequisites)
