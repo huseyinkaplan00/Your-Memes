@@ -1,6 +1,6 @@
-# Meme Generator
+# Your Memes
 
-Welcome to the Meme Generator project. This application allows you to create your own memes by adding custom texts to meme images fetched from an API. You can add as many text fields as you want, customize the font family, color, and size, and then download the resulting image. This project is built with React and hosted on a local development server.
+Welcome to the Your Memes project. This application allows you to create your own memes by adding custom texts to meme images fetched from an API. You can add as many text fields as you want, customize the font family, color, and size, and then download the resulting image. This project is built with React and hosted on a local development server.
 
 ![Meme Generator Preview](./memeGenerator/public/memeGeneratorGif.gif)
 
