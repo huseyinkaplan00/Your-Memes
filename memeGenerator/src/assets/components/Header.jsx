@@ -25,7 +25,7 @@ export default function Header() {
     >
       <a href="index.html">
         <img
-          src="/logo.png"
+          src="/memeGenerator/logo.png"
           alt="header icon troll face"
           className="header__logo"
         />

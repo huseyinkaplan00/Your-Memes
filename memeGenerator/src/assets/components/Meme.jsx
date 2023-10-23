@@ -134,7 +134,7 @@ export default function Meme() {
     const randomNumber = Math.floor(Math.random() * memes.length);
     const url = memes[randomNumber]
       ? memes[randomNumber].url
-      : "/placeHolderImage.svg";
+      : "/memeGenerator/placeHolderImage.svg";
 
     setTexts({
       topText: "",
