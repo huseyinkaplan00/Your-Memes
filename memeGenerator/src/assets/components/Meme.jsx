@@ -11,7 +11,7 @@ export default function Meme() {
   const [texts, setTexts] = React.useState({
     topText: "",
     bottomText: "",
-    randomImage: "/memeGenerator/placeHolderImage.svg",
+    randomImage: "/placeHolderImage.svg",
     fontSize: "35",
   });
 
@@ -134,7 +134,7 @@ export default function Meme() {
     const randomNumber = Math.floor(Math.random() * memes.length);
     const url = memes[randomNumber]
       ? memes[randomNumber].url
-      : "/memeGenerator/placeHolderImage.svg";
+      : "/placeHolderImage.svg";
 
     setTexts({
       topText: "",
