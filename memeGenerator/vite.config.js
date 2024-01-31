@@ -10,6 +10,5 @@ export default defineConfig({
         manualChunks: undefined,
       },
     },
-    publicPath: "/",
   },
 });
