@@ -5,7 +5,6 @@ import { Helmet } from "react-helmet";
 import Draggable from "react-draggable";
 import ColorThief from "colorthief";
 
-//black and dark mode ekle practice için !
 
 export default function Meme() {
   const [texts, setTexts] = React.useState({
@@ -84,8 +83,7 @@ export default function Meme() {
     document.body.style.backgroundImage = `linear-gradient(-45deg, ${backgroundColor}, ${boxShadowColor}, ${opacityColor}, #fff, #000)`;
   }, [backgroundColor]);
 
-  //google font select
-  //font size feature eklenecek, input arttırma feature ı eklenecek . Kullanıcı istediği kadar input girebilecek .
+
 
   React.useEffect(() => {
     const getFonts = async () => {
